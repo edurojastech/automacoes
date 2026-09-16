@@ -1,0 +1,71 @@
+# Configuracao de exemplo: clinica odontologica.
+#
+# Para reaproveitar esta automacao em outra clinica (mesmo de outro ramo),
+# copie esta pasta inteira, altere os campos abaixo e reescreva
+# `knowledge_base.md` com as informacoes do novo negocio.
+
+clinic_id: clinica_odonto_exemplo
+name: "Clínica Sorriso Feliz"
+
+# Nome da "instance" dessa clinica na Evolution API (o numero de WhatsApp
+# conectado a essa instance). E ele que identifica para qual clinica a
+# automacao deve rotear a conversa, e tambem faz parte da URL do webhook:
+# POST /webhook/evolution/<evolution_instance>
+evolution_instance: "clinica_sorriso_feliz"
+
+timezone: "America/Sao_Paulo"
+
+# ID do Google Calendar dedicado da clinica (pode ser o calendario principal
+# ou um secundario, ex: "clinica-sorriso@group.calendar.google.com").
+# Compartilhe esse calendario com o e-mail da conta de servico do Google.
+google_calendar_id: "SEU_CALENDAR_ID@group.calendar.google.com"
+
+appointment_duration_minutes: 30
+
+business_hours:
+  segunda: "08:00-12:00, 13:00-18:00"
+  terca: "08:00-12:00, 13:00-18:00"
+  quarta: "08:00-12:00, 13:00-18:00"
+  quinta: "08:00-12:00, 13:00-18:00"
+  sexta: "08:00-12:00, 13:00-17:00"
+  sabado: "08:00-12:00"
+  domingo: "fechado"
+
+agent:
+  persona_name: "Bia"
+  knowledge_base_file: "knowledge_base.md"
+
+  system_prompt: |
+    Voce e a Bia, assistente virtual de atendimento da Clinica Sorriso Feliz,
+    uma clinica odontologica. Voce conversa com pacientes pelo WhatsApp.
+
+    Seu objetivo e:
+    1. Tirar duvidas sobre a clinica usando a base de conhecimento abaixo.
+    2. Ajudar o paciente a agendar, remarcar ou cancelar consultas no
+       Google Calendar da clinica, usando as ferramentas disponiveis.
+    3. Escalar para um humano quando nao souber responder ou quando o
+       paciente pedir explicitamente para falar com uma pessoa.
+
+    Tom de voz: acolhedor, claro e profissional. Frases curtas. Sem jargao
+    tecnico odontologico desnecessario. Sempre responda em portugues do
+    Brasil.
+
+  services:
+    - name: "Avaliação / consulta inicial"
+      duration_minutes: 30
+      description: "Primeira consulta para avaliar a saude bucal do paciente."
+    - name: "Limpeza (profilaxia)"
+      duration_minutes: 40
+      description: "Remocao de tartaro e placa bacteriana."
+    - name: "Clareamento dental"
+      duration_minutes: 60
+      description: "Sessao de clareamento a laser em consultorio."
+    - name: "Restauração (obturação)"
+      duration_minutes: 50
+      description: "Tratamento de carie com resina."
+    - name: "Extração de dente"
+      duration_minutes: 45
+      description: "Extracao simples. Casos complexos exigem avaliacao previa."
+    - name: "Manutenção de aparelho ortodôntico"
+      duration_minutes: 30
+      description: "Ajuste mensal de aparelho fixo ou alinhador."
