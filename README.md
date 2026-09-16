@@ -45,3 +45,18 @@ após a confirmação.
 
 Os próximos scripts e ferramentas também serão desenvolvidos para uso pessoal
 e poderão ser adaptados conforme novos processos precisarem ser otimizados.
+
+## Segunda automação: `whatsapp_ai_agent/`
+
+Automação de atendimento via WhatsApp com um agente de IA (Claude). O
+agente responde de acordo com um **prompt** e uma **base de conhecimento**
+próprios de cada negócio, e agenda/cancela/consulta compromissos
+diretamente no **Google Calendar**.
+
+O exemplo incluso é de uma clínica odontológica, mas a estrutura é
+multi-tenant e reutilizável: basta copiar a pasta de uma clínica de exemplo
+e editar a configuração (prompt, base de conhecimento, horários, número de
+WhatsApp e calendário) para atender outro negócio, sem alterar código.
+
+Veja `whatsapp_ai_agent/README.md` para o passo a passo completo de
+configuração (WhatsApp Cloud API, Google Calendar e Claude).
