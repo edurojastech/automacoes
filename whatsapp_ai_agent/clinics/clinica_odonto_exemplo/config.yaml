@@ -7,10 +7,11 @@
 clinic_id: clinica_odonto_exemplo
 name: "Clínica Sorriso Feliz"
 
-# ID do numero de telefone do WhatsApp Business (Meta for Developers ->
-# WhatsApp -> API Setup -> "Phone number ID"). E ele que identifica para
-# qual clinica a automacao deve rotear a conversa.
-whatsapp_phone_number_id: "000000000000000"
+# Nome da "instance" dessa clinica na Evolution API (o numero de WhatsApp
+# conectado a essa instance). E ele que identifica para qual clinica a
+# automacao deve rotear a conversa, e tambem faz parte da URL do webhook:
+# POST /webhook/evolution/<evolution_instance>
+evolution_instance: "clinica_sorriso_feliz"
 
 timezone: "America/Sao_Paulo"
 

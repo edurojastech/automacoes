@@ -28,7 +28,7 @@ class Clinic:
     clinic_id: str
     name: str
     timezone: str
-    whatsapp_phone_number_id: str
+    evolution_instance: str
     google_calendar_id: str
     business_hours: dict
     appointment_duration_minutes: int
@@ -97,7 +97,7 @@ def _load_clinic_dir(clinic_dir: Path) -> Clinic:
         clinic_id=cfg["clinic_id"],
         name=cfg["name"],
         timezone=cfg.get("timezone", "America/Sao_Paulo"),
-        whatsapp_phone_number_id=str(cfg["whatsapp_phone_number_id"]),
+        evolution_instance=str(cfg["evolution_instance"]),
         google_calendar_id=cfg["google_calendar_id"],
         business_hours=cfg.get("business_hours", {}),
         appointment_duration_minutes=cfg.get("appointment_duration_minutes", 30),
@@ -118,13 +118,13 @@ def _load_all() -> dict[str, Clinic]:
         if not config_file.exists():
             continue
         clinic = _load_clinic_dir(clinic_dir)
-        clinics[clinic.whatsapp_phone_number_id] = clinic
+        clinics[clinic.evolution_instance] = clinic
     return clinics
 
 
-def get_clinic_by_phone_number_id(phone_number_id: str) -> Clinic | None:
-    """Retorna a clinica dona do numero de WhatsApp que recebeu a mensagem."""
-    return _load_all().get(str(phone_number_id))
+def get_clinic_by_evolution_instance(instance_name: str) -> Clinic | None:
+    """Retorna a clinica dona da instance da Evolution API que recebeu a mensagem."""
+    return _load_all().get(str(instance_name))
 
 
 def reload_clinics() -> None:

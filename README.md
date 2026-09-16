@@ -59,4 +59,4 @@ e editar a configuração (prompt, base de conhecimento, horários, número de
 WhatsApp e calendário) para atender outro negócio, sem alterar código.
 
 Veja `whatsapp_ai_agent/README.md` para o passo a passo completo de
-configuração (WhatsApp Cloud API, Google Calendar e Claude).
+configuração (Evolution API, Google Calendar e Claude).
